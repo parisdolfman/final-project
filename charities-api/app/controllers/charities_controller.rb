@@ -19,6 +19,22 @@ class CharitiesController < ApplicationController
         error = {
             #error message here
         }
+        render json: error
+      end 
     end 
+
+    def update
+      @charity.category = Category.find_by(name: params[:category])
+      if @charity.update(charity_params)
+        render json: @charity
+      else 
+        error = {
+            #error message here
+        }
+        render json: error 
+      end 
+    end 
+
+
 
 end
