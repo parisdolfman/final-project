@@ -25,7 +25,7 @@ class CharitiesController < ApplicationController
       if @charity.update(charity_params)
         render json: @charity
       else 
-        render json: {error: 'Could not update charity'}r 
+        render json: {error: 'Could not update charity'}
       end 
     end 
 
