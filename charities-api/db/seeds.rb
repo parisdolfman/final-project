@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Category.create(name: 'Domestic Needs')
+Category.create(name: 'International Needs')
+Category.create(name: 'Animal Protection')
+Category.create(name: 'Medical')
+Category.create(name: 'Youth')
+Category.create(name: 'Animal Protection')
+Category.create(name: 'Health')
+Category.create(name: 'Environment')
+Category.create(name: 'Domestic Needs')
+
+Charity.create(user_id: , image: '', category_id: '')
+
+puts 'data loaded success'
