@@ -42,8 +42,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #has_secure_password
 gem 'bcrypt'
 
-#serializers
-gem 'active_model_serializers'
+#serializer
+gem 'fast_jsonapi'
 
 #Rack CORS
 gem 'rack-cors'
