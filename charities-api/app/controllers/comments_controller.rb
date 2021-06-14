@@ -11,10 +11,7 @@ class CommentsController < ApplicationController
       if comment.save
         render json: comment
       else 
-        error = {
-            #error message
-        }
-        render json: error
+        render json: {error: 'Creation unsuccessful'}
       end 
     end
 
