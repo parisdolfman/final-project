@@ -16,10 +16,7 @@ class CharitiesController < ApplicationController
       if charity.save
         render json: charity
       else 
-        error = {
-            #error message here
-        }
-        render json: error
+        render json: {error: 'Could not create charity'}
       end 
     end 
 
@@ -28,10 +25,7 @@ class CharitiesController < ApplicationController
       if @charity.update(charity_params)
         render json: @charity
       else 
-        error = {
-            #error message here
-        }
-        render json: error 
+        render json: {error: 'Could not update charity'}r 
       end 
     end 
 
