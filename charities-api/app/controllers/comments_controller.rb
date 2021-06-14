@@ -17,6 +17,15 @@ class CommentsController < ApplicationController
         render json: error
       end 
     end
+
+    def update 
+      charity = @comment.charity
+      if @comment.update(description: params[:description])
+        render json: charity, serializer: CharityShowSerializer 
+      else 
+        render json: {error: 'Update unsuccessful'}
+      end 
+    end 
     
     
 
