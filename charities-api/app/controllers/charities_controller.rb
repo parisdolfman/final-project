@@ -35,6 +35,18 @@ class CharitiesController < ApplicationController
       end 
     end 
 
+    def destroy 
+      @charity.destroy
+      render json: {notice: 'Charity deleted'}
+    end 
 
+    private
+    def set_charity
+      @charity = Charity.find_by(id: params[:id])
+    end
+
+    def charity_params
+      params.require(:charity).permit(:name, :image)
+    end 
 
 end
