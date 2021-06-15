@@ -12,6 +12,14 @@ const Charity = props => {
       <div className='card'>
           <div className='card_side card_side--front'>
               <img className='card_image' src={props.image}></img>
+              {props.all && <h2 className='heading-tertiary'> Added By: {props.user.username} </h2> }
+          </div>
+          <div className='card_side card_side--back'>
+              <div className='card_content'>
+                  <h2 className='heading-charity'>Category: {props.category.name}</h2>
+
+              </div>
+              
           </div>
       </div>
     )
