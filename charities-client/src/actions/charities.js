@@ -11,3 +11,7 @@ import {
 
 import { getCurrentUser } from './currentUser'
 
+const BASE_URL = 'http://localhost:3000'
+const CHARITY_URL = `${BASE_URL}/charities`
+const COMMENT_URL = `${BASE_URL}/comments`
+
