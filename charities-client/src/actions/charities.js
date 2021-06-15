@@ -9,3 +9,5 @@ import {
 } from '../actionTypes'
 
 
+import { getCurrentUser } from './currentUser'
+

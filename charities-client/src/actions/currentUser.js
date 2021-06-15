@@ -51,3 +51,7 @@ export const signup = (credentials) = > {
         .catch(console.log)
     }
 }
+
+export const getCurrentUser = () => {
+    
+}
