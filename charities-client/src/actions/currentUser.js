@@ -53,5 +53,6 @@ export const signup = (credentials) = > {
 }
 
 export const getCurrentUser = () => {
-    
+
 }
+

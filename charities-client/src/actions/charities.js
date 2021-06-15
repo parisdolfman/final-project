@@ -60,3 +60,8 @@ export const addCharity = (charity) => {
     }
 }
 
+export const deleteCharity = () => {
+    // need delete charity method
+}
+
+
