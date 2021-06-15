@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :comments
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  post "login" to: "create user session"
-  post "sign up" to: "create new user"
-  post "logout" to: "session destroy"
+  post "/login", to: "sessions#create"
+  post "/signup", to: "users#create"
+  delete "/logout", to: "sessions#destroy"
+  get "/get_current_user", to: "sessions#get_current_user"
 
 end
