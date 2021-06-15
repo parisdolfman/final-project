@@ -15,3 +15,16 @@ const BASE_URL = 'http://localhost:3000'
 const CHARITY_URL = `${BASE_URL}/charities`
 const COMMENT_URL = `${BASE_URL}/comments`
 
+export const getCharities = () => {
+    return (dispatch) => {
+        fetch(CHARITY_URL, {
+            credentials: 'include',
+        })
+        .then(response => response.json())
+        .then(charities => dispatch({
+            type: GET_CHARITIES,
+            charities
+        }))
+    }
+}
+
