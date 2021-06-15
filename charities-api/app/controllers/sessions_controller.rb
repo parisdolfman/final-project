@@ -18,12 +18,12 @@ class SessionsController < ApplicationController
     end 
 
     def destroy
-      session.delete :username
+      session.delete :user_id
       if !session[:user_id]
         render json: {notice: "Log out successful"}
       else
         render json: {error: "You have not logged out"}
       end 
     end 
-    
+
 end
