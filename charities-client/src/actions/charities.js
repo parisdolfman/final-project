@@ -144,7 +144,7 @@ export const commentFormUpdate = (event) => ({
 })
 
 export const setComment = () => {
-  //set the comment
+  
 }
 
 export const setFormDataEditComment = () => {
