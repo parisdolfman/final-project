@@ -143,8 +143,21 @@ export const commentFormUpdate = (event) => ({
     payload: {name: event.target.name, value: event.target.value}
 })
 
-export const setComment = () => {
-  
+export const setComment = commentInfo => {
+  return dispatch => {
+      fetch(COMMENT_URL, {
+          credentials: "include",
+          method: "POST"
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(commentInfo),
+      })
+      .then(response => response.json())
+      .then(comment => dispatch({
+          type: RESET_FORM_DATA_COMMENT
+      }))
+  }
 }
 
 export const setFormDataEditComment = () => {
