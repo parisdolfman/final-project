@@ -160,20 +160,51 @@ export const setComment = commentInfo => {
   }
 }
 
-export const setFormDataEditComment = () => {
-  //set form for edit commenht
+export const setFormDataEditComment = description => {
+  return {
+      type: SET_FORM_DATA_EDIT_COMMENT
+      description
+  }
 }
 
 export const resetFormDataComment = () => {
-  //reset form comment
+  return {
+      type: RESET_FORM_DATA_COMMENT
+  }
 }
 
-export const editComment = () => {
-    //edit comment
+export const editComment = (commentInfo, commentId) => {
+    return dispatch => {
+        fetch(`$COMMENT_URL/${commentId}`, {
+            credentials: "include",
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(commentInfo),
+        })
+        .then(response => response.json())
+        .then(charity => dispatch({
+            type: EDIT_COMMENT,
+            charity
+        }))
+    }
 }
 
-export const deleteComment = () => {
-  //delete comment
+export const deleteComment = (commentId) => {
+  return (dispatch) => {
+      return fetch(`${COMMENT_URL}/${commentId}`, {
+          credentials: "include",
+          method: "DELETE",
+      })
+      .then(response => response.json())
+      .then (charity => {
+          dispatch({
+              type: DELETE_COMMENT,
+              charity,
+          })
+      })
+  }
 }
 
 export const filterFormChange = () => {
