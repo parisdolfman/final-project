@@ -20,6 +20,7 @@ import {
 
 import { getCurrentUser } from './currentUser'
 
+
 const BASE_URL = 'http://localhost:3000'
 const CHARITY_URL = `${BASE_URL}/charities`
 const COMMENT_URL = `${BASE_URL}/comments`
@@ -37,12 +38,12 @@ export const getCharities = () => {
     }
 }
 
-export const addCharity = (charity) => {
+export const addCharity = (charityInfo) => {
     return dispatch => {
-        const charityInfo = {
-            image: charity.image,
-            category: charity.category
-            name: charity.name
+        const sendCharityInfo = {
+            image: charityInfo.image,
+            category: charityInfo.category,
+            name: charityInfo.name
         }
         return fetch(CHARITY_URL, {
             credentials: "include"
@@ -50,7 +51,7 @@ export const addCharity = (charity) => {
             headers: {
                 "content-type": "application/json",
             },
-            body: JSON.stringify(charityInfo)
+            body: JSON.stringify(sendCharityInfo)
         })
         .then(response => response.json())
         .then(charity => {
@@ -58,14 +59,33 @@ export const addCharity = (charity) => {
                 alert(charity.error)
             } else {
                 dispatch({
-                    //add a news charity}
+                   type: ADD_CHARITY,
+                   charity
             })
-            // get current user
+            dispatch(getCurrentUser())
           }
         })
         .catch((error) => {
-            console.log(error)
+            console.log(error);
         });
+    }
+}
+
+
+export const editCharity = (charityInfo) => {
+    return dispatch => {
+        const sendCharityInfo = {
+            image: charityInfo.image,
+            category: charityInfo.category,
+            name: charityInfo.name
+        }
+        return fetch(`${CHARITY_URL}/${charityInfo.id}`, {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            } 
+        })
     }
 }
 
