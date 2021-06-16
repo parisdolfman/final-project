@@ -201,15 +201,16 @@ export const deleteComment = (commentId) => {
       .then (charity => {
           dispatch({
               type: DELETE_COMMENT,
-              charity,
+              charity
           })
       })
   }
 }
 
-export const filterFormChange = () => {
-    // filter
-}
+export const filterFormChange = (event) => ({
+    type: FILTER_FORM_CHANGE,
+    payload: {name: event.target.name, value: event.target.value}
+})
 
 
 
