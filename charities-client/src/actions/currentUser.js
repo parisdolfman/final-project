@@ -20,8 +20,10 @@ export const login = (credentials) => {
             alert(response.error)
         } else {
             dispatch({
-            //set the current user
+            type: SET_CURRENT_USER,
+            user: response
             })
+            history.push('/')
         }
         })
         .catch(console.log)
@@ -34,7 +36,7 @@ export const signup = (credentials) = > {
             credentials: "include",
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                'Content-Type': "application/json"
             },
             body:JSON.stringify(credentials)
         })
@@ -44,8 +46,10 @@ export const signup = (credentials) = > {
                 alert(response.error) 
                 } else {
                     dispatch({
-                        //take current user response and create new user
+                        type: SET_CURRENT_USER
+                        user: response
                     })
+                    history.push('/')
             }
         }) 
         .catch(console.log)
@@ -53,6 +57,26 @@ export const signup = (credentials) = > {
 }
 
 export const getCurrentUser = () => {
-
+    return dispatch => {
+        return fetch(`${URL}/get_current_user`, {
+            credentials: "include",
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json"
+            },
+        })
+        .then(response => response.json())
+        .then(response => {
+            if (response.error) {
+                console.log(error)
+            } else {
+                dispatch({
+                    type: SET_CURRENT_USER,
+                    user:response
+                })
+            }
+        })
+        .catch(console.log)
+    }
 }
 
