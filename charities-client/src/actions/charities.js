@@ -49,7 +49,7 @@ export const addCharity = (charityInfo) => {
             credentials: "include"
             method: "POST",
             headers: {
-                "content-type": "application/json",
+                'Content-Type': "application/json",
             },
             body: JSON.stringify(sendCharityInfo)
         })
@@ -81,11 +81,27 @@ export const editCharity = (charityInfo) => {
         }
         return fetch(`${CHARITY_URL}/${charityInfo.id}`, {
             credentials: "include",
-            method: "POST",
+            method: "PATCH",
             headers: {
-                "content-type": "application/json",
-            } 
+                'Content-Type': "application/json",
+            },
+            body: JSON.stringify(sendCharityInfo), 
         })
+        .then(response => response.json())
+        .then(charity => {
+            if (charity.error) {
+                alert(charity.error)
+            } else {
+                dispatch({
+                    type: EDIT_CHARITY,
+                    charity
+                })
+                dispatch(getCurrentUser())
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
     }
 }
 
