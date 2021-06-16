@@ -8,7 +8,6 @@ import {
 
     COMMENT_FORM_UPDATE,
     SET_COMMENT,
-    RESET_FORM_DATA_COMMENT,
     SET_FORM_DATA_EDIT_COMMENT,
     RESET_FORM_DATA_COMMENT,
     EDIT_COMMENT,
@@ -105,8 +104,67 @@ export const editCharity = (charityInfo) => {
     }
 }
 
-export const deleteCharity = () => {
-    // need delete charity method
+export const deleteCharity = (charityId) => {
+    return (dispatch) => {
+        return fetch(`${CHARITY_URL}/${charityId}`,{
+            credentials: "include"
+            method: "DELETE"
+        })
+        .then(response => response.json())
+        .then(() => {
+            dispatch({
+                type: DELETE_CHARITY,
+                charityId
+            })
+            dispatch(getCurrentUser())
+        })
+    }
 }
+
+export const setSelectedCharity = (charityId) => {
+    return dispatch => {
+        fetch(`${CHARITY_URL}/${charityId}`, {
+            credentials: "include",
+        })
+        .then(response = respons.json())
+        .then(charity => dispatch({
+            type: SET_SELECTED_CHARITY,
+            charity
+        }))
+    }
+}
+
+export const unsetCharity = () => ({
+    type: UNSET_CHARITY 
+})
+
+export const commentFormUpdate = () => {
+    // update the comment
+}
+
+export const setComment = () => {
+  //set the comment
+}
+
+export const setFormDataEditComment = () => {
+  //set form for edit commenht
+}
+
+export const resetFormDataComment = () => {
+  //reset form comment
+}
+
+export const editComment = () => {
+    //edit comment
+}
+
+export const deleteComment = () => {
+  //delete comment
+}
+
+export const filterFormChange = () => {
+    // filter
+}
+
 
 
