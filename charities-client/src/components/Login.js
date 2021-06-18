@@ -30,6 +30,7 @@ class Login extends Component {
 
     render() {
         return (
+            <>
             { !this.props.leggedIn ?
                 <div className='auth-form-container'>
                     <form className='auth-form u-margin-top-big' onSubmit={this.onSubmit}>
@@ -40,7 +41,7 @@ class Login extends Component {
                         </div>
                     <div className='auth-form_group'>
                         <input className='auth-form_input' placeholder="username" value={this.state.username} name="username" type="text" onChange={this.onChange} />
-                        <label htmlFor="username" className"auth-form_label">Username</label>
+                        <label htmlFor="username" className="auth-form_label">Username</label>
                         </div>
                 <div className="auth-form_group">
                     <input className='auth-form_input' placeholder="password" value={this.state.password} name="password" type="password" onChange={this.onChange} />
@@ -53,6 +54,7 @@ class Login extends Component {
                 </div >
                     : <Redirect to='/' />
             }
+            </>
         )
     }
 
