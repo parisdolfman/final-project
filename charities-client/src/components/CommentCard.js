@@ -23,11 +23,18 @@ class CommentCard extends Component {
                 <span className='comment_username'>{username}</span>
                 <span className='comment_description'>{description}</span>
                 {userId === currentUser.id &&
+                <>
                   <span>
-                      <a href="#bottom" onClick={this.onClickEdit}>
-                      </a>
+                      <span>
+                          <a href="#bottom" onClick={this.onClickOfEdit}>
+                              <svg className="icon icon--edit-comment u-margin-left-small">
+                                  <use href={sprite + '#icon-pencil2'} />
+                              </svg>
+                          </a>
+                      </span>
                   </span>
-                  //modal for comment form
+                  <CommentFormModal dislay={this.state.modal} toggle={this.toggleModal} commentId={id} content={content}/>
+                  </>
                 }
             </div>
         )
