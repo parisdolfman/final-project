@@ -26,7 +26,7 @@ const NavBar = props => {
               My Profile
             </span>  
           </NavLink>
-          <NavLink className='nav_link' to="/sightings">
+          <NavLink className='nav_link' to="/charities">
           <span>
               <svg className="icon icon--nav">
                 <use href={sprite + '#icon-heart'} />
