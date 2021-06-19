@@ -31,7 +31,7 @@ class Login extends Component {
     render() {
         return (
             <>
-            { !this.props.leggedIn ?
+            { !this.props.loggedIn ?
                 <div className='auth-form-container'>
                     <form className='auth-form u-margin-top-big' onSubmit={this.onSubmit}>
                         <div className="u-margin-bottom-medium">
