@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteComment, setFormDataEditComment, resetFormDataComment } from '../actions/charities'
+import CommentFormModal from '..containers/CommentFormModal'
+import sprite from '../imgs/sprite.svg'
 
 class CommentCard extends Component {
     state = {
@@ -14,6 +16,11 @@ class CommentCard extends Component {
     onClickEdit = () => {
         this.setState({modal: true})
         this.props.setFormDataEditComment(this.props.description)
+    }
+
+    toggleModal = () => {
+        this.setState({modal: !this.state.modal})
+        this.props.resetFormDataComment()
     }
 
     render(){
@@ -32,6 +39,13 @@ class CommentCard extends Component {
                               </svg>
                           </a>
                       </span>
+                      <span>
+                          <a href="#bottom" onClick={this.onClick}>
+                              <svg className="icon incon--trash-comment">
+                                <use href={sprite + '#icon-bin2'} />
+                              </svg>
+                          </a>
+                      </span>
                   </span>
                   <CommentFormModal dislay={this.state.modal} toggle={this.toggleModal} commentId={id} content={content}/>
                   </>
@@ -47,7 +61,7 @@ const mapStateToProps = state => {
     }
 }
 
-export defauly connect(mapStateToProps, { setFormDataEditComment })
+export default connect(mapStateToProps, { setFormDataEditComment, resetFormDataComment, deleteComment })(CommentCard)
 
 
 
