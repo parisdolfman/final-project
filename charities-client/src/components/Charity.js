@@ -1,11 +1,12 @@
 import { connect } from 'react-redux'
 import { deleteCharity } from '../actions/charities'
 import { NavLink } from 'react-router-dom'
+import sprite from '../imgs/sprite.svg'
 
 const Charity = props => {
 
     const onClick = () => {
-        props.deletecharity(props.name)
+        props.deletecharity(props.id)
     }
 
     return (
@@ -19,6 +20,21 @@ const Charity = props => {
               <div className='card_content'>
                   <h2 className='heading-charity'>Category: {props.category.name}</h2>
               </div>
+              <NavLink to={`/sightings/${props.id}`} className='link'>More Info</NavLink>
+              <span>
+                { props.currentOwner && 
+                  <a href="#center" onClick={() => props.populateForm(props)}>
+                    <svg className="icon icon--edit">
+                      <use href={sprite + '#icon-pencil2'} />
+                    </svg>
+                  </a>}
+                { props.currentOwner && 
+                  <a href="#center" onClick={onClick}>
+                    <svg className="icon icon--trash">
+                      <use href={sprite + '#icon-bin2'} />
+                    </svg>
+                  </a>}
+          </span>
 
           </div>
       </div>
