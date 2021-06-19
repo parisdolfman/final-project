@@ -107,11 +107,12 @@ class SightingContainer extends React.Component {
   filteredCharities = () => this.props.filter === 'All' ?  this.searchedCharities() : this.searchedCharities().filter(charity => charity.category.name === this.props.filter)
 
   sortedCharities = () => this.props.sort === 'alphabetically' 
-    ? this.filteredSightings().sort((a, b) => a.name.localeCompare(b.name)) 
+    ? this.filteredCharities().sort((a, b) => a.name.localeCompare(b.name)) 
+    : this.filterdCharities().sort((a, b) => b.date.localeCompare(a.date))
 
     //
 
-  renderAllSightings = () => {
+  renderAllCharities = () => {
     return (
       <>
         <h2 className='heading-secondary'>All Charities</h2>
@@ -135,10 +136,9 @@ class SightingContainer extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-      getSightings: () => dispatch(getSightings()),
-      addSighting: (data) => dispatch(addSighting(data)),
-      editSighting: (data) => dispatch(editSighting(data))
+      getCharities: () => dispatch(getCharities()),
+      addCharity: (data) => dispatch(addCharity(data)),
+      editCharity: (data) => dispatch(editCharity(data))
     }
   }
-  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SightingContainer))
-  // export default withRouter(connect(mapStateToProps, { getSightings, addSighting, editSighting })(SightingContainer))
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CharityContainer))
