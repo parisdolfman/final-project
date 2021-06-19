@@ -3,7 +3,7 @@ import { connect} from 'react-redux'
 import { setSelectedCharity, unsetCharity } from '../actions/charities'
 import CommentCard from './CommentCard'
 import CommentForm from './CommentForm'
-import sprite from '../imgs/sprite.svg'
+// import sprite from '../imgs/sprite.svg'
 
 class CharityPage extends Component {
 
