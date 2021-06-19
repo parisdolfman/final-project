@@ -7,9 +7,9 @@ import {
 
 const URL = 'http://localhost:3000'
 
-export const login = (credentials) => {
+export const login = (credentials, history) => {
     return dispatch => {
-        return fetch(`$URL/login`, {
+        return fetch(`${URL}/login`, {
             credentials: "include",
             method: "POST",
             headers: {
@@ -19,7 +19,8 @@ export const login = (credentials) => {
         })
         .then(response => response.json())
         .then(response => {
-            alert(response.error)
+          if (response.error) {
+           alert(response.error)
         } else {
             dispatch({
             type: SET_CURRENT_USER,
@@ -32,7 +33,7 @@ export const login = (credentials) => {
     }
 }
 
-export const signup = (credentials) = > {
+export const signup = (credentials) => {
     return dispatch => {
         return fetch(`${URL}/signup`, {
             credentials: "include",
@@ -48,7 +49,7 @@ export const signup = (credentials) = > {
                 alert(response.error) 
                 } else {
                     dispatch({
-                        type: SET_CURRENT_USER
+                        type: SET_CURRENT_USER,
                         user: response
                     })
                     history.push('/')
@@ -70,11 +71,11 @@ export const getCurrentUser = () => {
         .then(response => response.json())
         .then(response => {
             if (response.error) {
-                console.log(error)
+                console.log(response.error)
             } else {
                 dispatch({
                     type: SET_CURRENT_USER,
-                    user:response
+                    user: response
                 })
             }
         })
@@ -95,7 +96,7 @@ export const authUser = () => {
         .then(response => response.json())
         .then(response => {
             if (response.error) {
-                console.log(error);
+                console.log(response.error)
                 dispatch({type: COMPLETE_AUTH})
                 dispatch({type: CLEAR_CURRENT_USER})
             } else {
@@ -110,9 +111,9 @@ export const authUser = () => {
     }
 }
 
-export const logout = (history) = > {
+export const logout = (history) => {
     return dispatch => {
-        return fetch(`${URL}`, {
+        return fetch(`${URL}/logout`, {
             credentials: "include",
             method: "DELETE"
         })
