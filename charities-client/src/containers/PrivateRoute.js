@@ -6,7 +6,7 @@ import {withRouter} from 'react-router-dom'
 import CharityFormModal from './CharityFormModal'
 import Filters from './Filters'
 import { addCharity, editCharity } from '../actions/charities'
-import sprite from '../imgs/sprite.svg'
+// import sprite from '../imgs/sprite.svg'
 
 
 class PrivateRoute extends Component {
