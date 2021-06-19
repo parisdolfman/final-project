@@ -4,7 +4,7 @@ import { commentFormUpdate, editComment, setComment } from '../actions/charities
 
 const commentForm = (props) => {
 
-    const { description } = props.commentForm
+    const { description } = props.form
 
     const onSubmit = event => {
         event.preventDefault()
@@ -19,7 +19,7 @@ const commentForm = (props) => {
     return (
         <form onSubmit={onSubmit}>
             <textarea className='textarea' name="description" required={true} value={content} onChange={props.commentFormUpdate} placeholder='Comment'></textarea>
-            <input className="btn btn-small btn-small-submit-comment" type="submit" value="SEND"/>
+            <input className="btn btn--small btn--small--submit-comment" type="submit" value="SEND"/>
         </form>
     )
 }
