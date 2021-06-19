@@ -74,7 +74,7 @@ export const editCharity = (charityInfo) => {
         const sendCharityInfo = {
             image: charityInfo.image,
             category: charityInfo.category,
-            name: charityInfo.name
+            name: charityInfo.name,
         }
         return fetch(`${CHARITY_URL}/${charityInfo.id}`, {
             credentials: "include",
@@ -97,16 +97,16 @@ export const editCharity = (charityInfo) => {
             }
         })
         .catch((error) => {
-            console.log(error);
+            console.error('Error:', error);
         });
     }
 }
 
 export const deleteCharity = (charityId) => {
     return (dispatch) => {
-        return fetch(`${CHARITY_URL}/${charityId}`,{
-            credentials: "include"
-            method: "DELETE"
+        return fetch(`${CHARITY_URL}/${charityId}`, {
+            credentials: "include",
+            method: "DELETE",
         })
         .then(response => response.json())
         .then(() => {
@@ -122,9 +122,9 @@ export const deleteCharity = (charityId) => {
 export const setSelectedCharity = (charityId) => {
     return dispatch => {
         fetch(`${CHARITY_URL}/${charityId}`, {
-            credentials: "include",
+            credentials: "include"
         })
-        .then(response = respons.json())
+        .then(response = response.json())
         .then(charity => dispatch({
             type: SET_SELECTED_CHARITY,
             charity
@@ -153,14 +153,15 @@ export const setComment = commentInfo => {
       })
       .then(response => response.json())
       .then(comment => dispatch({
-          type: RESET_FORM_DATA_COMMENT
+          type: SET_COMMENT,
+          payload: comment
       }))
   }
 }
 
 export const setFormDataEditComment = description => {
   return {
-      type: SET_FORM_DATA_EDIT_COMMENT
+      type: SET_FORM_DATA_EDIT_COMMENT,
       description
   }
 }
@@ -173,7 +174,7 @@ export const resetFormDataComment = () => {
 
 export const editComment = (commentInfo, commentId) => {
     return dispatch => {
-        fetch(`$COMMENT_URL/${commentId}`, {
+        fetch(`${COMMENT_URL}/${commentId}`, {
             credentials: "include",
             method: "PATCH",
             headers: {
