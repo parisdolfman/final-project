@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { deleteComment, setFormDataEditComment, resetFormDataComment } from '../actions/charities'
 import CommentFormModal from '..containers/CommentFormModal'
-import sprite from '../imgs/sprite.svg'
+// import sprite from '../imgs/sprite.svg'
 
 class CommentCard extends Component {
     state = {
