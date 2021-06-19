@@ -40,15 +40,15 @@ export const addCharity = (charityInfo) => {
         const sendCharityInfo = {
             image: charityInfo.image,
             category: charityInfo.category,
-            name: charityInfo.name
+            name: charityInfo.name,
         }
         return fetch(CHARITY_URL, {
-            credentials: "include"
+            credentials: "include",
             method: "POST",
             headers: {
                 'Content-Type': "application/json",
             },
-            body: JSON.stringify(sendCharityInfo)
+            body: JSON.stringify(sendCharityInfo),
         })
         .then(response => response.json())
         .then(charity => {
@@ -63,7 +63,7 @@ export const addCharity = (charityInfo) => {
           }
         })
         .catch((error) => {
-            console.log(error);
+            console.error('Error:', error);
         });
     }
 }
