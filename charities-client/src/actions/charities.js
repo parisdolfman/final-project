@@ -145,7 +145,7 @@ export const setComment = commentInfo => {
   return dispatch => {
       fetch(COMMENT_URL, {
           credentials: "include",
-          method: "POST"
+          method: "POST",
           headers: {
               'Content-Type': 'application/json',
           },
