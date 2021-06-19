@@ -6,16 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Category.create(name: 'Domestic Needs')
+Category.create!(name: 'Domestic Needs')
 Category.create(name: 'International Needs')
 Category.create(name: 'Animal Protection')
 Category.create(name: 'Medical')
 Category.create(name: 'Youth')
 Category.create(name: 'Health')
 Category.create(name: 'Environment')
-Category.create(name: 'Domestic Needs')
 
-Charity.create(user_id: 1, image: 'https://www.unitedway.org/assets/img/new-logo.svg', category_id: 1, name: 'United Way Worldwide')
+Charity.create!(user_id: 1, image: 'https://www.unitedway.org/assets/img/new-logo.svg', category_id: 1, name: 'United Way Worldwide')
 Charity.create(user_id: 2, image: 'https://www.qlik.com/blog/assets/uploads/images/direct-relief.jpg', category_id: 2, name: 'Direct Relief')
 Charity.create(user_id: 3, image: 'https://www.salvationarmyusa.org/templates/usa_nhq_symphony/static_resources/images/global/shield.svg', category_id: 1, name: 'Salvation Army')
 Charity.create(user_id: 1, image: 'https://www.batcon.org/wp-content/uploads/2020/07/19_BCI_LOGO_ALTERNATE_CIRCULAR_WEBSITE_RGB_FULL_COLOR.svg', category_id: 3, name: 'Bat Conservation International')
@@ -30,7 +29,7 @@ Charity.create(user_id: 3, image: 'https://upload.wikimedia.org/wikipedia/en/thu
 Charity.create(user_id: 1, image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Mount_Sinai_Health_System_logo.svg/150px-Mount_Sinai_Health_System_logo.svg.png', category_id: 6, name: 'Mount Sinai Health Systems')
 Charity.create(user_id: 1, image: 'https://upload.wikimedia.org/wikipedia/en/thumb/2/2c/Planned_Parenthood_logo.svg/220px-Planned_Parenthood_logo.svg.png', category_id: 1, name: 'Planned Parenthood Federation of America')
 
-Comment.create(user_id: 1, charity_id: 1, description: 'Very proud of what this charity has done.')
+Comment.create!(user_id: 1, charity_id: 1, description: 'Very proud of what this charity has done.')
 Comment.create(user_id: 2, charity_id: 2, description: 'Donated to this charity last Christmas. Happy to help!')
 Comment.create(user_id: 3, charity_id: 3, description: 'I send a donation in my daughters name every year.')
 Comment.create(user_id: 1, charity_id: 4, description: 'Had the opportunity to volunteer with this charity a month ago. It was a pleasure working with them!')
@@ -45,6 +44,8 @@ Comment.create(user_id: 3, charity_id: 12, description: 'I saw a great documenta
 Comment.create(user_id: 1, charity_id: 13, description: 'Looking forward to donating.')
 Comment.create(user_id: 1, charity_id: 13, description: 'Great help to the community.')
 
-
+User.create!(username: 'AAA', password_digest: '123456', name: 'Andy')
+User.create(username: 'BBB', password_digest: '1234567', name: 'Bex')
+User.create(username: 'CCC', password_digest: '12345678', name: 'Cade')
 
 puts 'data loaded success'
