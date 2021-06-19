@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { deleteCharity } from '../actions/charities'
 import { NavLink } from 'react-router-dom'
-import sprite from '../imgs/sprite.svg'
+// import sprite from '../imgs/sprite.svg'
 
 const Charity = props => {
 
