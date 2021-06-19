@@ -52,7 +52,7 @@ const NavBar = props => {
           <NavLink className='nav__link' to="/signup">
             <span>
               <svg className="icon icon--nav">
-                <use href={sprite + '#icon-quill'} />  //can't decide on better icon
+                <use href={sprite + '#icon-quill'} />  
               </svg>
               Sign Up
             </span>
@@ -62,7 +62,7 @@ const NavBar = props => {
               <svg className="icon icon--nav">
                 <use href={sprite + '#icon-unlocked'} />
               </svg>
-              Login //add logout here?
+              Login 
             </span>  
           </NavLink>
         </div>
