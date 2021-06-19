@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Logout from '../components/Logout'
-import sprite from '../imgs/sprite.svg'
+// import sprite from '../imgs/sprite.svg'
 
 const NavBar = props => {
   
