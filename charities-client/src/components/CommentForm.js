@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { commentFormUpdate, editComment, setComment } from '../actions/charities'
 
-const commentForm = (props) => {
+const CommentForm = (props) => {
 
     const { description } = props.form
 
@@ -18,7 +18,7 @@ const commentForm = (props) => {
     
     return (
         <form onSubmit={onSubmit}>
-            <textarea className='textarea' name="description" required={true} value={content} onChange={props.commentFormUpdate} placeholder='Comment'></textarea>
+            <textarea className='textarea' name="description" required={true} value={description} onChange={props.commentFormUpdate} placeholder='Comment'></textarea>
             <input className="btn btn--small btn--small--submit-comment" type="submit" value="SEND"/>
         </form>
     )
@@ -28,4 +28,4 @@ const mapStateToProps = state => ({
     form: state.charities.commentForm,
 })
 
-export default connect(mapStateToProps, {commentFormUpdate, editComment, submitComment })(CommentForm)
+export default connect(mapStateToProps, {commentFormUpdate, editComment, setComment })(CommentForm)
