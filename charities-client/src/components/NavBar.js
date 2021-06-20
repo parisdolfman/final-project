@@ -13,7 +13,7 @@ const NavBar = props => {
           <NavLink className='nav_link' to="/">
             <span>
               <svg className="icon icon--nav">
-                <use href={sprite + '#icon-home3'} />
+                {/*<use href={sprite + '#icon-home3'} />*/}
               </svg>
               Home
             </span>
@@ -21,7 +21,7 @@ const NavBar = props => {
           <NavLink className='nav_link' to="/myprofile">
             <span>
               <svg className="icon icon--nav">
-                <use href={sprite + '#icon-user'} />
+                {/*<use href={sprite + '#icon-user'} />*/}
               </svg>
               My Profile
             </span>  
@@ -29,7 +29,7 @@ const NavBar = props => {
           <NavLink className='nav_link' to="/charities">
           <span>
               <svg className="icon icon--nav">
-                <use href={sprite + '#icon-heart'} />
+                {/*<use href={sprite + '#icon-heart'} />*/}
               </svg>
               Charities
             </span>
@@ -44,7 +44,7 @@ const NavBar = props => {
           <NavLink className='nav__link' to="/">
             <span>
               <svg className="icon icon--nav">
-                <use href={sprite + '#icon-home3'} />
+                {/*<use href={sprite + '#icon-home3'} />*/}
               </svg>
               Home
             </span>
@@ -52,7 +52,7 @@ const NavBar = props => {
           <NavLink className='nav__link' to="/signup">
             <span>
               <svg className="icon icon--nav">
-                <use href={sprite + '#icon-quill'} />  
+                {/*<use href={sprite + '#icon-quill'} /> */} 
               </svg>
               Sign Up
             </span>
@@ -60,7 +60,7 @@ const NavBar = props => {
           <NavLink className='nav__link' to="/login">
             <span>
               <svg className="icon icon--nav">
-                <use href={sprite + '#icon-unlocked'} />
+                {/*<use href={sprite + '#icon-unlocked'} />*/}
               </svg>
               Login 
             </span>  
