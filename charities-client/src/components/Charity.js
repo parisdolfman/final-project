@@ -25,13 +25,13 @@ const Charity = props => {
                 { props.currentOwner && 
                   <a href="#center" onClick={() => props.populateForm(props)}>
                     <svg className="icon icon--edit">
-                      <use href={sprite + '#icon-pencil2'} />
+                      {/*<use href={sprite + '#icon-pencil2'} />*/}
                     </svg>
                   </a>}
                 { props.currentOwner && 
                   <a href="#center" onClick={onClick}>
                     <svg className="icon icon--trash">
-                      <use href={sprite + '#icon-bin2'} />
+                      {/*(<use href={sprite + '#icon-bin2'} />*/}
                     </svg>
                   </a>}
           </span>
