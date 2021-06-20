@@ -17,7 +17,7 @@ class CharityPage extends Component {
     }
   
     render() {
-      const { image, name, category } = this.props
+      const { image, name, category, username, comments, id } = this.props
       return (
         <>
         <div className='charity-page row u-center-text'>
