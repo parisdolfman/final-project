@@ -41,4 +41,4 @@ const Charity = props => {
     )
 }
 
-export default connect(null, {deleteCharity})(Charity);
+export default connect(null, {deleteCharity})(Charity)
