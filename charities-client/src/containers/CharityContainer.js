@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getcharities } from '../actions/charities'
+import { getCharities } from '../actions/charities'
 import Charity from '../components/Charity'
 import {withRouter} from 'react-router-dom'
 import CharityFormModal from '../components/CharityFormModal'
@@ -8,7 +8,7 @@ import Filters from '../components/Filters'
 import { addCharity, editCharity } from '../actions/charities'
 // import sprite from '../imgs/sprite.svg'
 
-class SightingContainer extends React.Component {
+class CharityContainer extends React.Component {
 
   state = {
     modal: false,
@@ -23,7 +23,7 @@ class SightingContainer extends React.Component {
 
   onChange = (event) => {
     const target = event.target;
-    //for possible addition of add feature: const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
     this.setState({form:
       {
@@ -77,7 +77,7 @@ class SightingContainer extends React.Component {
       <>
         <button className="btn btn--charity" onClick={this.openNewCharityForm}>
         <svg className="icon icon--add">
-          <use href={sprite + '#icon-plus'} />
+          {/*<use href={sprite + '#icon-plus'} />*/}
         </svg>
           Charity</button>
           <section className="cards">
@@ -134,11 +134,11 @@ class SightingContainer extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-      getCharities: () => dispatch(getCharities()),
-      addCharity: (data) => dispatch(addCharity(data)),
-      editCharity: (data) => dispatch(editCharity(data))
+      currentUser: state.currentUser.currentUser,
+      charities: state.charities.charities,
+      ...state.charities.filtersForm
     }
   }
-  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CharityContainer))
+  export default withRouter(connect(mapStateToProps, {getCharities, addCharity, editCharity})(CharityContainer))
