@@ -27,7 +27,7 @@ const CharityFormModal = props => {
           <label className='charity-form__label' htmlFor='category'>Category</label>
         </div>
         <div className='charity-form_group'>
-            <input className='charity-form_input' placeholder='Name' type="text" name="Name"  onChange={onChange} value={ame}/>
+            <input className='charity-form_input' placeholder='Name' type="text" name="Name"  onChange={onChange} value={name}/>
             <label className='charity-form_label' htmlFor='commonName'>Name</label>
         </div>
         <input className="btn btn--small" type="submit" value="Submit" />
