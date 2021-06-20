@@ -52,7 +52,7 @@ export const signup = (credentials) => {
                         type: SET_CURRENT_USER,
                         user: response
                     })
-                    history.push('/')
+                    window.history.push('/')
             }
         }) 
         .catch(console.log)
