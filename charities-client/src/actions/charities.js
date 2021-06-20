@@ -122,9 +122,9 @@ export const deleteCharity = (charityId) => {
 export const setSelectedCharity = (charityId) => {
     return dispatch => {
         fetch(`${CHARITY_URL}/${charityId}`, {
-            credentials: "include"
+            credentials: "include",
         })
-        .then(response = response.json())
+        .then(response => response.json())
         .then(charity => dispatch({
             type: SET_SELECTED_CHARITY,
             charity
