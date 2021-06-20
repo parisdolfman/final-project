@@ -137,7 +137,7 @@ export const unsetCharity = () => ({
 })
 
 export const commentFormUpdate = (event) => ({
-    type: COMMENT_FORM_CHANGE,
+    type: COMMENT_FORM_UPDATE,
     payload: {name: event.target.name, value: event.target.value}
 })
 
