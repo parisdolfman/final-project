@@ -35,19 +35,19 @@ class CommentCard extends Component {
                       <span>
                           <a href="#bottom" onClick={this.onClickOfEdit}>
                               <svg className="icon icon--edit-comment u-margin-left-small">
-                                  <use href={sprite + '#icon-pencil2'} />
+                                  {/*<use href={sprite + '#icon-pencil2'} />*/}
                               </svg>
                           </a>
                       </span>
                       <span>
                           <a href="#bottom" onClick={this.onClick}>
                               <svg className="icon incon--trash-comment">
-                                <use href={sprite + '#icon-bin2'} />
+                               {/*<use href={sprite + '#icon-bin2'} />*/}
                               </svg>
                           </a>
                       </span>
                   </span>
-                  <CommentFormModal dislay={this.state.modal} toggle={this.toggleModal} commentId={id} content={content}/>
+                  <CommentFormModal dislay={this.state.modal} toggle={this.toggleModal} commentId={id} description={description}/>
                   </>
                 }
             </div>
