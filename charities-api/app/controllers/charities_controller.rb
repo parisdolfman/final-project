@@ -36,7 +36,8 @@ class CharitiesController < ApplicationController
     end 
 
     def destroy 
-      @charity.destroy
+      charity = Charity.find_by(id: params[:id])
+      charity.destroy
       render json: {notice: 'Charity deleted'}
     end 
 
