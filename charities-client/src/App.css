@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
+.login-form,
+.signup-form {
+  max-width: 300px;
+  width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-page,
+.signup-page {
+  width: 100vw;
+  height: 92vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+.card-img {
+  object-fit: cover;
+  width: 100%;
+  height: 50%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.comment-card {
+  max-height: 200px;
+  height: fit-content;
+}
+
+.prof-comment-card {
+  max-height: 140px;
+}
+
+.card-body {
+  height: 50px;
+}
+
+.card {
+  height: 280px;
+}
+
+.drop-down {
+  max-height: 100px;
+  height: 100%;
+}
+
+.show-img {
+  max-height: 300px;
+  max-width: 300px;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
