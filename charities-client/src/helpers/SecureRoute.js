@@ -15,7 +15,7 @@ const SecureRoute = (props) => {
         user  ? (
           <Component {...props} />
         ) : (
-          <Redirect to="login" />
+          <Redirect to="/login" />
         )
       }
     />
@@ -27,3 +27,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps)(SecureRoute);
+asds
