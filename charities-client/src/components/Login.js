@@ -1,69 +1,68 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { login, getCurrrentUser } from '../actions/currentUser.js'
-import { withRouter, Redirect } from 'react-router-dom'
+import React, { useRef, useEffect } from 'react';
+import { InputGroup, FormControl, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { login_user } from '../actions/authActions';
+import { useHistory, useLocation, Redirect } from 'react-router-dom';
+import { getCurrentUser } from '../helpers/index';
 
-class Login extends Component {
-    
-    componentDidMount() {
-        this.props.getCurrrentUser()
-    }
 
-    state = {
-        username: '',
-        password: ''
-    }
 
-    onChange = event => {
-        const { name, value } = event.target
-        this.setState({[name]: value})
-    }
+const Login = ({ login_Auth }) => {
+  const history = useHistory();
+  const location = useLocation()
+  const username = useRef('');
+  const password = useRef('');
+const current_user = getCurrentUser()
+   
+useEffect(() => {
+  console.log(location)
+  location.pathname == '/login' && current_user ? history.push('/') : null
+})
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login_Auth({
+      username: username.current.value,
+      password_digest: password.current.value,
+    });
+    setTimeout(() => {
+      
+      history.push('/');
+    }, 600);
+  };
 
-    onSubmit = event => {
-        event.preventDefault()
-        this.props.login(this.state, this.props.history)
-        this.setState({
-            username: '',
-            password: ''
-        })
-    }
+  return (
+    <div className="login-page">
+      <h2> Login </h2>
+      <form className="login-form" onSubmit={handleLogin}>
+        <label htmlFor="basic-url">Username</label>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            ref={username}
+          />
+        </InputGroup>
+        <label htmlFor="basic-url">Password</label>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="password"
+            aria-label="password"
+            aria-describedby="basic-addon1"
+            type='password'
+            ref={password}
+          />
+        </InputGroup>
+        <Button type="submit" className="w-100" variant="primary">
+          Login
+        </Button>
+      </form>
+    </div>
+  );
+};
 
-    render() {
-        return (
-            <>
-            { !this.props.loggedIn ?
-                <div className='auth-form-container'>
-                    <form className='auth-form u-margin-top-big' onSubmit={this.onSubmit}>
-                        <div className="u-margin-bottom-medium">
-                            <h2 className="heading-secondary u-margin-left-medium">
-                                Login
-                            </h2>
-                        </div>
-                    <div className='auth-form_group'>
-                        <input className='auth-form_input' placeholder="username" value={this.state.username} name="username" type="text" onChange={this.onChange} />
-                        <label htmlFor="username" className="auth-form_label">Username</label>
-                        </div>
-                <div className="auth-form_group">
-                    <input className='auth-form_input' placeholder="password" value={this.state.password} name="password" type="password" onChange={this.onChange} />
-                    <label htmlFor="password" className="auth-form_label">Password</label>
-                </div>
-                <div className="auth-form_group">
-                    <input className='btn u-margin-left-medium' type="submit" value="Log In" />
-                </div>
-                    </form>
-                </div >
-                    : <Redirect to='/' />
-            }
-            </>
-        )
-    }
+const mapDispatchToProps = {
+  login_Auth: (user_info) => login_user(user_info),
+};
 
-}
-
-const mapStateToProps = state => {
-    return {
-        loggedIn: !!state.currentUser
-    }
-}
-
-export default withRouter(connect(mapStateToProps, { login, getCurrentUser })(Login))
+export default connect(null, mapDispatchToProps)(Login);
