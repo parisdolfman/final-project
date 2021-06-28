@@ -15,22 +15,24 @@ class CharitiesController < ApplicationController
     end
     
     def create
-      charity = current_user.charity.build(charity_params)
+      current_user = User.find_by(id: params[:user_id])
+      charity = current_user.charities.build(charity_params)
       charity.category = Category.find_or_create_by(name: params[:category])
-      if charity.save
-        render json: charity
-      else 
-        render json: {error: 'Could not create charity'}
-      end 
+        if charity.save
+          render json: charity
+        else 
+          render json: {error: 'Could not create charity'}, status: 403
+        end 
     end 
 
     def update
-      @charity.category = Category.find_by(name: params[:category])
-      if @charity.update(charity_params)
-        render json: @charity
+      charity = Charity.find_by(id: params[:id])
+    
+      if charity.update(charity_params)
+        render json: charity
       else 
-        render json: {error: 'Could not update charity'}
-      end 
+        render json: {error: 'Could not update charity'}, status: 403
+      end
     end 
 
     def destroy 
