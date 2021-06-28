@@ -25,9 +25,9 @@ const Profile = ({ getCharities, charities, getAllCategories, getComments }) => 
 
   return profile ? (
     <div>
-      <h3 className="text-center"> Name: {profile.name} </h3>
+      <h3 className="text-center"> Welcome {profile.name}! </h3>
 
-      <h5 className="text-center"> Charities </h5>
+      <h5 className="text-center"> Your Charities </h5>
       <div className="d-flex justify-content-center flex-wrap items-center h-100 w-100">
         {charities.charities ? (
           charities.charities
@@ -39,7 +39,7 @@ const Profile = ({ getCharities, charities, getAllCategories, getComments }) => 
           <h3> Loading... </h3>
         )}
       </div>
-      <h5 className="text-center"> Comments </h5>
+      <h5 className="text-center"> Your Comments </h5>
       <div className="w-50 mx-auto">
         <div className="d-flex justify-content-center flex-column items-center h-100 w-100">
           {charities.comments ? (
@@ -51,7 +51,7 @@ const Profile = ({ getCharities, charities, getAllCategories, getComments }) => 
                   className="w-100 prof-comment-card mb-3"
                 >
                   <Card.Header className="fw-light">
-                    Name: {com.username}
+                    User: {com.username}
                   </Card.Header>
                   <Card.Body>
                     <Card.Text className="fw-light">
