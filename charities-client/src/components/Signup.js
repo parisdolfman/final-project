@@ -1,74 +1,91 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { signup, getCurrentUser } from '../actions/currentUser.js'
-import { withRouter, Redirect } from 'react-router-dom'
+import React, { useRef, useState } from 'react';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { InputGroup, FormControl, Button } from 'react-bootstrap';
+import { signUp_user } from '../actions/authActions';
 
-class Signup extends Component {
+const SignUp = ({ signUp_Auth }) => {
+  const [err, setErr] = useState(false);
 
-  componentDidMount(){
-    this.props.getCurrentUser()
-  }
+  const histroy = useHistory();
+  const username = useRef('');
+  const name = useRef('');
+  const password = useRef('');
 
-  state = {
-    username: '',
-    password: '',
-    name: '',
-  }
+  const handleError = () => {
+    setTimeout(() => {
+      setErr(false);
+    }, 4000);
+    setErr(true);
+  };
 
-  onChange = event => {
-      const { name, value } = event.target
-      this.setState({[name]: value})
-  }
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    if (
+      name.current.value === '' ||
+      username.current.value === '' ||
+      password.current.value === ''
+    ) {
+      handleError();
+      return false;
+    }
+    signUp_Auth({
+      name: name.current.value,
+      username: username.current.value,
+      password_digest: password.current.value,
+    });
+    setTimeout(() => {
+      
+      histroy.push('/');
+    }, 600);
+  };
 
-  onSubmit = event => {
-    event.preventDefault()
-    this.props.signup(this.state, this.props.history)
-    this.setState({
-        username: '',
-        password: '',
-        name: '',
-    })
-  }
+  return (
+    <div className="signup-page">
+      <h2> SignUp </h2>
+      <form className="signup-form" onSubmit={handleSignUp}>
+        <label htmlFor="basic-url">Username</label>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="Username"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+            className={err ? 'border border-danger' : ''}
+            ref={username}
+          />
+        </InputGroup>
+        <label htmlFor="basic-url">Password</label>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="password"
+            aria-label="password"
+            aria-describedby="basic-addon1"
+            type="password"
+            border="danger"
+            className={err ? 'border border-danger' : ''}
+            ref={password}
+          />
+        </InputGroup>
+        <label htmlFor="basic-url">Name</label>
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="name"
+            aria-label="name"
+            aria-describedby="basic-addon1"
+            className={err ? 'border border-danger' : ''}
+            ref={name}
+          />
+        </InputGroup>
+        <Button type="submit" className="w-100" variant="primary">
+          SignUp
+        </Button>
+      </form>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <>
-      { !this.props.loggedIn ? 
-        <div className='auth-form-container'>
-          <form className='auth-form u-margin-top-medium' onSubmit={this.onSubmit}>
-            <div className="u-margin-bottom-medium">
-              <h2 className="heading-secondary u-margin-left-medium ">
-                  Signup 
-              </h2>
-            </div>
-            <div className="auth-form__group">
-              <input placeholder="username" className='auth-form__input' value={this.state.username} name="username" type="text" onChange={this.onChange} />
-              <label htmlFor="username" className="auth-form__label">Username</label>
-            </div>
-            <div className="auth-form__group">
-              <input placeholder="password" className='auth-form__input' value={this.state.password} name="password" type="password" onChange={this.onChange} />
-              <label htmlFor="username" className="auth-form__label">Password</label>
-            </div>
-            <div className="auth-form__group">
-              <input placeholder="name" className='auth-form__input' value={this.state.name} name="name" type="text" onChange={this.onChange} />
-              <label htmlFor="username" className="auth-form__label">Name</label>
-            </div>
-            <div className="auth-form__group">
-              <input className='btn u-margin-left-medium ' type="submit" value="Signup"/>
-            </div>
-          </form>
-        </div>
-        : <Redirect to='/' />
-        }
-      </>
-    )
-  }
-}
+const mapDispatchToProps = {
+  signUp_Auth: (user_info) => signUp_user(user_info),
+};
 
-const mapStateToProps = state => {
-  return {
-    loggedIn: !!state.currentUser
-  }
-}
-
-export default withRouter(connect(mapStateToProps, { signup, getCurrentUser })(Signup))
+export default connect(null, mapDispatchToProps)(SignUp);
