@@ -3,7 +3,7 @@ import './App.css';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 import HomePageContainer from './containers/HomePageContainer';
-import NavBarContainer from './containers/NavBarConatiner';
+import NavBarContainer from './containers/NavBarContainer';
 import SecureRoute from './helpers/SecureRoute';
 import Profile from './components/Profile';
 import ShowPage from './components/ShowPage';
