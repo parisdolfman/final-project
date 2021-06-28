@@ -16,6 +16,7 @@ const current_user = getCurrentUser()
    
 useEffect(() => {
   console.log(location)
+  // eslint-disable-next-line no-unused-expressions
   location.pathname == '/login' && current_user ? history.push('/') : null
 })
   const handleLogin = (e) => {
