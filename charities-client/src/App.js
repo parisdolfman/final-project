@@ -1,29 +1,28 @@
-import { BrowserRouter as Router, Route, Switch, useHistory} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Home from './containers/Home'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import MyProfile from './containers/MyProfile'
-import CharityContainer from './containers/CharityContainer'
-import NavBar from './components/NavBar'
-import PrivateRoute from './containers/PrivateRoute'
-import CharityPage from './components/CharityPage'
-
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import HomePageContainer from './containers/HomePageContainer';
+import NavBarContainer from './containers/NavBarConatiner';
+import SecureRoute from './helpers/SecureRoute';
+import Profile from './components/Profile';
+import ShowPage from './components/ShowPage';
 
 function App() {
-  const history = useHistory();
   return (
     <div className="App">
-        <Router>
-          <NavBar />
-          <Switch>
-            <Route exact path='/login' component={Login} history={history}/>
-            <Route exact path='/signup' component={Signup} history={history}/>
-            <Route exact path="/" component={Home} history={history}/>
-          </Switch>
+      <Router>
+        <NavBarContainer />
+        <Switch>
+          <SecureRoute exact path="/" component={HomePageContainer} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={SignUp} />
+          <SecureRoute path="/profile" component={Profile} />
+          <SecureRoute path="/charities/:id" component={ShowPage} />
+        </Switch>
       </Router>
     </div>
   );
 }
 
-export default App
+export default App;
