@@ -190,7 +190,7 @@ const ShowPage = ({
       </h3>
       <h5 className="text-center">
         {' '}
-        userName :{' '}
+        Added by:{' '}
         {charities.charities.filter((ele) => ele.id == id)[0].username}{' '}
       </h5>
       <div className="d-flex flex-column justify-content-center align-items-center">
