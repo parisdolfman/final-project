@@ -1,80 +1,46 @@
-import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import Logout from '../components/Logout'
-// import sprite from '../imgs/sprite.svg'
+import { Navbar, Nav } from 'react-bootstrap';
+import { getCurrentUser, logoutUser } from '../helpers';
+import { useHistory } from 'react-router-dom';
 
-const NavBar = props => {
-  
-  return (
-    <nav className='nav '>
-      {props.loggedIn ? 
-        <>
-        <div className='nav_link-container'>
-          <NavLink className='nav_link' to="/">
-            <span>
-              <svg className="icon icon--nav">
-                {/*<use href={sprite + '#icon-home3'} />*/}
-              </svg>
-              Home
-            </span>
-          </NavLink>
-          <NavLink className='nav_link' to="/myprofile">
-            <span>
-              <svg className="icon icon--nav">
-                {/*<use href={sprite + '#icon-user'} />*/}
-              </svg>
-              My Profile
-            </span>  
-          </NavLink>
-          <NavLink className='nav_link' to="/charities">
-          <span>
-              <svg className="icon icon--nav">
-                {/*<use href={sprite + '#icon-heart'} />*/}
-              </svg>
-              Charities
-            </span>
-          </NavLink>
-        </div>
-        <div className='nav_logout-container'>
-          <Logout /> 
-        </div>
-        </>
-        :
-        <div className='nav__link-container'>
-          <NavLink className='nav__link' to="/">
-            <span>
-              <svg className="icon icon--nav">
-                {/*<use href={sprite + '#icon-home3'} />*/}
-              </svg>
-              Home
-            </span>
-          </NavLink>
-          <NavLink className='nav__link' to="/signup">
-            <span>
-              <svg className="icon icon--nav">
-                {/*<use href={sprite + '#icon-quill'} /> */} 
-              </svg>
-              Sign Up
-            </span>
-          </NavLink>
-          <NavLink className='nav__link' to="/login">
-            <span>
-              <svg className="icon icon--nav">
-                {/*<use href={sprite + '#icon-unlocked'} />*/}
-              </svg>
-              Login 
-            </span>  
-          </NavLink>
-        </div>
-      }
-    </nav>
-  )
-}
+const NavBar = () => {
+  const history = useHistory();
+  const profile = getCurrentUser();
 
-const mapStateToProps = state => {
-  return ({
-    loggedIn: !!state.currentUser,
-  })
-}
-
-export default connect(mapStateToProps)(NavBar)
+  return profile ? (
+    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+      <Navbar.Brand href="/">MyCharities Home</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto"></Nav>
+        <Nav>
+          <Nav.Link href="/profile">My Profile</Nav.Link>
+          <Nav.Link
+            eventKey={2}
+            onClick={() => {
+              logoutUser();
+              window.location.reload();
+              return history.push('/login');
+            }}
+          >
+            Logout
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  ) : (
+    <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+      <Navbar.Brand href="/">MyCharities Home</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="mr-auto"></Nav>
+        <Nav>
+          <Nav.Link href="/profile">Login</Nav.Link>
+          <Nav.Link eventKey={2} href="/signup">
+            Signup
+          </Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
+  );
+};
+export default NavBar;
